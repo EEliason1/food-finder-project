@@ -1,10 +1,11 @@
 import React from "react";
+import NavLinks from "./NavLinks";
 
 const Navbar: React.FC = () => {
   return (
-    <div className="flex">
-      <h1 className="text-slate-500">Navbar</h1>
-      <h2>Test</h2>
+    <div className="flex content-between justify-between items-center p-4 bg-blue-900 text-slate-200">
+      <h1 className="">Food Finder</h1>
+      <NavLinks />
     </div>
   );
 };
