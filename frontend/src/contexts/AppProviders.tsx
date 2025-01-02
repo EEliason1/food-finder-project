@@ -3,6 +3,7 @@ import { AuthProvider } from "./AuthContext";
 import { UserProvider } from "./UserContext";
 import { RestaurantProvider } from "./RestaurantContext";
 import { LocationProvider } from "./LocationContext";
+import { PasswordResetProvider } from "./PasswordResetContext";
 
 interface AppProvidersProps {
   children: ReactNode;
@@ -10,12 +11,14 @@ interface AppProvidersProps {
 
 export const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
   return (
-    <AuthProvider>
-      <UserProvider>
-        <RestaurantProvider>
-          <LocationProvider>{children}</LocationProvider>
-        </RestaurantProvider>
-      </UserProvider>
-    </AuthProvider>
+    <UserProvider>
+      <AuthProvider>
+        <PasswordResetProvider>
+          <RestaurantProvider>
+            <LocationProvider>{children}</LocationProvider>
+          </RestaurantProvider>
+        </PasswordResetProvider>
+      </AuthProvider>
+    </UserProvider>
   );
 };

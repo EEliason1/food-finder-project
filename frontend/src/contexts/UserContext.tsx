@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 
 interface User {
   id: string;
@@ -9,7 +15,7 @@ interface User {
 
 interface UserContextProps {
   user: User | null;
-  updateUser: (user: User) => void;
+  setUser: (user: User | null) => void;
   clearUser: () => void;
 }
 
@@ -22,11 +28,22 @@ const UserContext = createContext<UserContextProps | undefined>(undefined);
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
-  const updateUser = (user: User) => setUser(user);
-  const clearUser = () => setUser(null);
+  useEffect(() => {
+    const storedUser =
+      localStorage.getItem("user") || sessionStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const clearUser = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
+  };
 
   return (
-    <UserContext.Provider value={{ user, updateUser, clearUser }}>
+    <UserContext.Provider value={{ user, setUser, clearUser }}>
       {children}
     </UserContext.Provider>
   );

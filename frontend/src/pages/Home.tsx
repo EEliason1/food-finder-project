@@ -1,9 +1,12 @@
 import React from "react";
+import HomeHeader from "../components/HomeHeader";
+import HomeContent from "../components/HomeContent";
 
 const Home: React.FC = () => {
   return (
     <div>
-      <div>Test Home</div>
+      <HomeHeader />
+      <HomeContent />
     </div>
   );
 };

@@ -10,12 +10,13 @@ const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login(email, password);
+      await login(email, password, rememberMe);
       navigate("/");
     } catch (err) {
       setError("Invalid email or password");
@@ -84,15 +85,24 @@ const SignIn: React.FC = () => {
             <label className="flex items-center">
               <input
                 type="checkbox"
+                id="rememberMe"
+                checked={rememberMe}
+                onChange={(e) => setRememberMe(e.target.checked)}
                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
-              <span className="ml-2 text-sm text-gray-600">Remember me</span>
+              <label
+                htmlFor="rememberMe"
+                className="ml-2 text-sm text-gray-600"
+              >
+                Remember me
+              </label>
             </label>
-            <a href="#" className="text-sm text-blue-600 hover:underline">
+            <Link to="/forgot-password" className="text-sm text-blue-600 hover:underline">
               Forgot password?
-            </a>
+            </Link>
           </div>
           <div>
+            {error && <p className="text-red-500 text-sm mb-1">{error}</p>}
             <button
               type="submit"
               className="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"

@@ -3,7 +3,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 const Profile: React.FC = () => {
   const { logout } = useAuth();
-  
+
   return (
     <button
       onClick={logout}

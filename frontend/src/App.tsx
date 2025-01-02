@@ -7,6 +7,8 @@ import Profile from "./pages/Profile";
 import Favorites from "./pages/Favorites";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import ForgotPassword from "./pages/forgot-password";
+import ResetPassword from "./pages/ResetPassword";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 const App: React.FC = () => {
@@ -15,6 +17,8 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route
           path="/"
           element={
