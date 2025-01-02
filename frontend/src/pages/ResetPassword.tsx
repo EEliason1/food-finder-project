@@ -115,6 +115,7 @@ const ResetPassword: React.FC = () => {
 };
 
 const fakeResetPasswordApi = async (password: string) => {
+  console.log(password);
   return new Promise((resolve) => setTimeout(resolve, 1000));
 };
 

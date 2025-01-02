@@ -9,11 +9,11 @@ const HomeHeader: React.FC = () => {
   const firstname = user?.name.split(" ")[0];
 
   return (
-    <header className="bg-blue-500 p-16">
-      <h1 className="text-slate-200 text-[36px]">Welcome to Food Finder</h1>
+    <header className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center py-10">
+      <h1 className="text-4xl font-bold">Welcome to Food Finder</h1>
       {isAuthenticated ? (
         <>
-          <h2 className="text-slate-300 text-[20px]">
+          <h2 className="mt-4 text-lg w-4/5 mx-auto">
             Welcome back, {firstname}! Answer a couple questions to find the
             perfect place to eat. You can also look at your favorite restaurants
             if you already have an idea of what you'd like to eat.
@@ -21,30 +21,30 @@ const HomeHeader: React.FC = () => {
         </>
       ) : (
         <>
-          <h2 className="text-slate-300 text-[20px]">
+          <h2 className="mt-4 text-lg w-4/5 mx-auto">
             Answer a couple questions to find the perfect place to eat. Login or
             sign up to save your favorite restaurants to easily find them later.
           </h2>
         </>
       )}
-      <div className="flex gap-6 mt-6">
+      <div className="mt-6 flex justify-center space-x-4">
         <Link
           to="/restaurant-questions"
-          className="bg-blue-600 hover:bg-blue-700 text-[20px] p-3 rounded-2xl"
+          className="bg-blue-700 hover:bg-blue-800 text-white py-2 px-4 rounded shadow-lg"
         >
           Restaurant Questions
         </Link>
         {isAuthenticated ? (
           <Link
             to="/favorites"
-            className="bg-blue-600 hover:bg-blue-700  text-[20px] p-3 rounded-2xl"
+            className="bg-purple-700 hover:bg-purple-800 text-white py-2 px-4 rounded shadow-lg"
           >
             Favorites
           </Link>
         ) : (
-            <Link
+          <Link
             to="/sign-in"
-            className="bg-blue-600 hover:bg-blue-700  text-[20px] p-3 rounded-2xl"
+            className="bg-purple-700 hover:bg-purple-800 text-white py-2 px-4 rounded shadow-lg"
           >
             Sign In
           </Link>

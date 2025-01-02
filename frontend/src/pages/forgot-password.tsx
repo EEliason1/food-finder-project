@@ -113,6 +113,7 @@ const ForgotPassword: React.FC = () => {
 };
 
 const fakeSendCodeApi = async (email: string) => {
+  console.log(email);
   return new Promise((resolve) => setTimeout(resolve, 1000));
 };
 
